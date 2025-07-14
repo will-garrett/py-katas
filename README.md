@@ -8,6 +8,7 @@ Recommend using [uv](https://docs.astral.sh/uv/) to run any scripts
 
 ## Table of Contents
 - [Numeric Combinations](#numeric-combinations)
+- [Collinear Points](#)
 
 ### Numeric Combinations
 #### Description:
@@ -33,3 +34,42 @@ uv run numeric-combinations.py 987654321 100
 Results are added to a file, with the digits provided and the target number separated by a `_` 
 
 `uv run numeric-combinations.py 987654321 100` will write to `987654321_100.txt` which I've renamed and commited to this repo [here](987654321_100_result.txt).
+
+### Collinear Points
+
+#### Description:
+
+A script to determine if a set of points are collinear (lie on the same straight line). The algorithm works by:
+
+1. Taking the first two points to establish an initial slope
+2. Checking if all subsequent points maintain the same slope relative to the first point
+3. If any point deviates from this slope, the points are not collinear
+
+The script accepts points as command line arguments or runs predefined examples when no arguments are provided.
+
+#### Usage:
+
+**Run with examples (no arguments):**
+```sh
+uv run collinear.py
+```
+
+**Check custom points:**
+```sh
+uv run collinear.py <x1> <y1> <x2> <y2> <x3> <y3> ...
+```
+
+**Examples:**
+```sh
+# Check if points (1,1), (2,2), (4,4), (-10,-10) are collinear
+uv run collinear.py 1 1 2 2 4 4 -10 -10
+
+# Check if points (1,0), (2,0), (3,1) are collinear  
+uv run collinear.py 1 0 2 0 3 1
+```
+
+#### Output Format:
+```
+Points: [(x1, y1), (x2, y2), (x3, y3), ...]
+Collinear: True/False
+```
